@@ -1,0 +1,10 @@
+@import 'config';
+
+header {
+    background:$primary-color;
+    color:set-text-color($primary-color);
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    text-align:center;
+}
