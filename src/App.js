@@ -29,8 +29,8 @@ function App() {
 
     axios.get(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
       .then(res => {
-        if(res.Response === "True") {
-          setMovies(res.Search);
+        if(res.data.Response === "True") {
+          setMovies(res.data.Search);
           setLoading(false);
         }else {
           setError(res.err);
@@ -42,19 +42,21 @@ function App() {
   return (
     <div className="App">
         <Header title={'Movie Search'}/>
-        <Search search={search} />
-        <div className="movies">
-          {
-            loading && !error ? (
-              <span>loading...</span>
-            ) : error ? (
-              <div className='errorMessage'>{error}</div>
-            ) : (
-              movies && movies.map(movie => (
-                <Movie key={movie.imdbID} movie={movie} />
-              ))
-            )
-          }
+        <div className="main">
+          <Search search={search} />
+          <div className="movies">
+            {
+              loading && !error ? (
+                <span>loading...</span>
+              ) : error ? (
+                <div className='errorMessage'>{error}</div>
+              ) : (
+                movies && movies.map(movie => (
+                  <Movie key={movie.imdbID} movie={movie} />
+                ))
+              )
+            }
+          </div>
         </div>
     </div>
   );

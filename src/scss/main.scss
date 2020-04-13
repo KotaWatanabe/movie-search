@@ -1,5 +1,9 @@
 @import 'config';
 
+.App {
+
+}
+
 header {
     background:$primary-color;
     color:set-text-color($primary-color);
@@ -13,4 +17,21 @@ header {
     font-size:1.5rem;
     height:70px;
     padding:0.5rem;
+}
+
+
+.main {
+
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    form {
+        margin-top: 10vh;
+    }
 }
