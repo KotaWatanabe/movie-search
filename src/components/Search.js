@@ -12,18 +12,19 @@ const Search = ({search}) => {
     const submitInput = e => {
         e.preventDefault();
         search(searchValue);
-        console.log('hit search')
         resetInput();
     }
     return (
         <div className="search">
             <form>
                 <input 
+                    className="search-input"
                     type="text"
                     value={searchValue}
                     onChange={e => inputChange(e)}
                 />
                 <input 
+                    className="btn btn-primary search-button"
                     type="submit"
                     value="Search!"
                     onClick={e => submitInput(e)}
