@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import noImage from '../img/no-image.jpg';
 import axios from 'axios';
+import MovieDetail from './MovieDetail';
 
 const DEFAULT_PLACEHOLDER_IMAGE = noImage
 
@@ -10,15 +11,17 @@ const Movie = ({movie}) => {
         : 
         movie.Poster;
     const id = movie.imdbID
-    const [movieDetail, setMovieDetail] = useState({});
+    const [movieInfo, setMovieInfo] = useState({});
+    const [detailToggle, setDetailToggele] = useState(false);
+
     useEffect(() => {
         axios.get(`http://www.omdbapi.com/?i=${id}&apikey=1a6bcae6`)
-            .then(res => setMovieDetail(res.data))
+            .then(res => setMovieInfo(res.data))
             .catch(err => {
                 console.error(err.message)
             })
     },[])
-    console.log(movieDetail)
+    console.log(movieInfo)
     return (
         <div className="movie">
            <h2>{movie.Title}</h2>
@@ -29,8 +32,11 @@ const Movie = ({movie}) => {
                     src={poster}
                 />
             </div>
-            <span>({movie.Year})</span><span>{movieDetail.Runtime}</span>
-            <p>Rating:{movieDetail.imdbRating}</p>
+            <span>({movie.Year})</span><span>{movieInfo.Runtime}</span>
+            <p>Rating:{movieInfo.imdbRating}</p>
+            <button onClick={() => setDetailToggele(!detailToggle)}
+            >Detail</button>
+            {detailToggle ? <MovieDetail detailInfo={movieInfo}/> : ''}
         </div>
     )
 }
