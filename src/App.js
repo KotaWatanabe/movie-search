@@ -52,7 +52,11 @@ function App() {
                 <div className='errorMessage'>{error}</div>
               ) : (
                 movies && movies.map(movie => (
-                  <Movie key={movie.imdbID} movie={movie} />
+                  <Movie 
+                    search={search} 
+                    key={movie.imdbID} 
+                    movie={movie} 
+                  />
                 ))
               )
             }

@@ -5,10 +5,15 @@ const MovieDetail = ({detailInfo : {
     Director,
     Actors,
     Ratings
-}}) => {
+}, search}) => {
     return (
         <div>
-            <p>Director:{Director}</p>
+            <p>Director: 
+                <a href="#!" 
+                    onClick={() => search(Director)}>
+                    {Director}
+                </a>
+            </p>
             <p>Actors:{Actors}</p>
             {Ratings.length > 0 ? (
                 Ratings.map(rating => (

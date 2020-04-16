@@ -5,7 +5,7 @@ import MovieDetail from './MovieDetail';
 
 const DEFAULT_PLACEHOLDER_IMAGE = noImage
 
-const Movie = ({movie}) => {
+const Movie = ({movie, search}) => {
     const poster = movie.Poster === "N/A" ? 
         DEFAULT_PLACEHOLDER_IMAGE 
         : 
@@ -36,7 +36,7 @@ const Movie = ({movie}) => {
             <p>Rating:{movieInfo.imdbRating}</p>
             <button onClick={() => setDetailToggele(!detailToggle)}
             >Detail</button>
-            {detailToggle ? <MovieDetail detailInfo={movieInfo}/> : ''}
+            {detailToggle ? <MovieDetail search={search} detailInfo={movieInfo}/> : ''}
         </div>
     )
 }
