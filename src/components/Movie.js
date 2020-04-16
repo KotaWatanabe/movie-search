@@ -22,6 +22,14 @@ const Movie = ({movie, search}) => {
             })
     },[])
     console.log(movieInfo)
+
+    const ratingFixer = stringNum => {
+        let rating = parseFloat(stringNum);
+        if(rating > 7.5) {
+            return <p> <span style={{color:"red", fontWeight:"bold"}}>{rating}</span>/10</p>
+        }   return <p>{rating}/10</p>
+    }
+
     return (
         <div className="movie">
            <h2>{movie.Title}</h2>
@@ -33,7 +41,7 @@ const Movie = ({movie, search}) => {
                 />
             </div>
             <span>({movie.Year})</span><span>{movieInfo.Runtime}</span>
-            <p>Rating:{movieInfo.imdbRating}</p>
+            <p>Rating: {ratingFixer(movieInfo.imdbRating)}</p>
             <button onClick={() => setDetailToggele(!detailToggle)}
             >Detail</button>
             {detailToggle ? <MovieDetail search={search} detailInfo={movieInfo}/> : ''}
