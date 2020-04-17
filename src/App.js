@@ -22,7 +22,7 @@ function App() {
             setError(err.message);
           })
   },[])
-
+  console.log(movies)
   const search = searchValue => {
     setLoading(true);
     setError(null);
@@ -39,11 +39,24 @@ function App() {
       })
   }
 
+  const sortByRating = movieList => (
+    movieList.map(movie => {
+      console.log(movie)
+    })
+  )
+  const sortByYear = movieList => {
+    setLoading(true);
+    const sortedMovies = movieList.sort((a,b) => b.Year - a.Year);
+    setMovies(sortedMovies);
+    setLoading(false);
+  }
   return (
     <div className="App">
         <Header title={'Movie Search'}/>
         <div className="main">
           <Search search={search} />
+          <button onClick={() => sortByRating(movies)}>Sort by Rating</button>
+          <button onClick={() => sortByYear(movies)}>Sort by Year</button>
           <div className="movies">
             {
               loading && !error ? (
@@ -51,7 +64,7 @@ function App() {
               ) : error ? (
                 <div className='errorMessage'>{error}</div>
               ) : (
-                movies && movies.map(movie => (
+                movies.map(movie => (
                   <Movie 
                     search={search} 
                     key={movie.imdbID} 

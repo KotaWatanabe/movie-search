@@ -21,8 +21,7 @@ const Movie = ({movie, search}) => {
                 console.error(err.message)
             })
     },[])
-    console.log(movieInfo)
-
+console.log(movieInfo)
     const ratingFixer = stringNum => {
         let rating = parseFloat(stringNum);
         if(rating > 7.5) {
