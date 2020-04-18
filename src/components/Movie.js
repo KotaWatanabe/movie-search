@@ -21,12 +21,12 @@ const Movie = ({movie, search}) => {
                 console.error(err.message)
             })
     },[])
-console.log(movieInfo)
+// console.log(movieInfo)
     const ratingFixer = stringNum => {
         let rating = parseFloat(stringNum);
         if(rating > 7.5) {
-            return <p> <span style={{color:"red", fontWeight:"bold"}}>{rating}</span>/10</p>
-        }   return <p>{rating}/10</p>
+            return <span> <span style={{color:"red", fontWeight:"bold"}}>{rating}</span>/10</span>
+        }   return <span>{rating}/10</span>
     }
 
     return (

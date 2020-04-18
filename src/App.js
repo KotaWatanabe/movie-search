@@ -47,7 +47,7 @@ function App() {
   const sortByYear = movieList => {
     setLoading(true);
     const sortedMovies = movieList.sort((a,b) => b.Year - a.Year);
-    setMovies(sortedMovies);
+    setMovies([...sortedMovies]);
     setLoading(false);
   }
   return (
